@@ -46,7 +46,7 @@ class BuscadorDeTweetsFragment: Fragment() {
             }
         })
 
-        setar item zero
+        //TODO: setar item zero
     }
 
     private fun filtraTweetPeloTexto(texto: String?): List<Tweet>? {
