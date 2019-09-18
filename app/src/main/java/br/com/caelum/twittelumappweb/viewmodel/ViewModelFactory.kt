@@ -9,14 +9,17 @@ import br.com.caelum.twittelumappweb.data.TweetRepository
 import br.com.caelum.twittelumappweb.data.UsuarioRepositorio
 import br.com.caelum.twittelumappweb.network.InicializadorDoRetrofit
 import br.com.caelum.twittelumappweb.network.LoginApi
+import br.com.caelum.twittelumappweb.network.TweetApi
 
 object ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
 
-    private fun splashRepository() = SplashRepository(storage())
-    private fun context() = TweetelumApplication.getInstance()
-    private fun storage() = LoginStorage(context())
-    private fun loginApi() = LoginApi(InicializadorDoRetrofit().cria())
-    private fun tweetRepository()   = TweetRepository()
+    private fun tweetApi()          = TweetApi(retrofit())
+    private fun retrofit()          = InicializadorDoRetrofit().cria()
+    private fun splashRepository()  = SplashRepository(storage())
+    private fun context()           = TweetelumApplication.getInstance()
+    private fun storage()           = LoginStorage(context())
+    private fun loginApi()          = LoginApi(InicializadorDoRetrofit().cria())
+    private fun tweetRepository()   = TweetRepository(tweetApi(), storage())
     private fun usuarioRepository() = UsuarioRepositorio(loginApi(), storage())
 
     @Suppress("UNCHECKED_CAST")

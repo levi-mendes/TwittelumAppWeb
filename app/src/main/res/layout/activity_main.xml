@@ -18,7 +18,7 @@
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/main_fab"
+        android:id="@+id/fab_add_tweet"
         android:layout_margin="16dp"
         android:src="@drawable/ic_novo_tweet"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
