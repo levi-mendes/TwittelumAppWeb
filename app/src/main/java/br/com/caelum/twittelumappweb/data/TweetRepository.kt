@@ -13,13 +13,6 @@ class TweetRepository (private val api: TweetApi, private val storage: LoginStor
         api.cria(tweetDTO)
     }
 
-    fun buscaTweets(): List<Tweet> {
-        return arrayListOf(
-            Tweet("Cuzcuz é bom"),
-            Tweet("Pizza é melhor"),
-            Tweet("Tapioca é bom"),
-            Tweet("Pão de metro é melhor")
-        )
-    }
+    suspend fun buscaTweets(): List<TweetDTO> = api.lista()
 
 }

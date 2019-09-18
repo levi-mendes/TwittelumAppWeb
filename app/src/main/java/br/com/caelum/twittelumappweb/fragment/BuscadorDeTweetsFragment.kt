@@ -7,6 +7,7 @@ import android.support.v7.widget.SearchView
 import android.view.*
 import br.com.caelum.twittelumappweb.R
 import br.com.caelum.twittelumappweb.adapter.TweetAdapter
+import br.com.caelum.twittelumappweb.dto.TweetDTO
 import br.com.caelum.twittelumappweb.modelo.Tweet
 import br.com.caelum.twittelumappweb.viewmodel.TweetViewModel
 import br.com.caelum.twittelumappweb.viewmodel.ViewModelFactory
@@ -49,7 +50,7 @@ class BuscadorDeTweetsFragment: Fragment() {
         //TODO: setar item zero
     }
 
-    private fun filtraTweetPeloTexto(texto: String?): List<Tweet>? {
+    private fun filtraTweetPeloTexto(texto: String?): List<TweetDTO>? {
         val tweets = viewModel.getTweets()
 
         return tweets.value?.filter {
