@@ -5,4 +5,4 @@ data class Usuario (
         val username: String,
         val senha: String,
         val foto: String? = null,
-        val id: Long = 0)
+        val id: Int = 0)
