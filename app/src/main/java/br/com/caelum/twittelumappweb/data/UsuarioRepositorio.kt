@@ -1,11 +1,11 @@
 package br.com.caelum.twittelumappweb.data
 
-import android.util.Log
 import br.com.caelum.twittelumappweb.modelo.Usuario
+import br.com.caelum.twittelumappweb.network.LoginApi
 
-class UsuarioRepositorio {
+class UsuarioRepositorio(private val api: LoginApi) {
 
-    fun criarConta(usuario: Usuario) = Log.i("CriaConta", "$usuario")
+    suspend fun criarConta(usuario: Usuario) = api.cria(usuario)
 
-    fun login(usuario: Usuario) = Log.i("LoginConta", "$usuario")
+    suspend fun login(usuario: Usuario) = api.loga(usuario)
 }
