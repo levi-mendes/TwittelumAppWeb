@@ -6,5 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class TweetDTO (val mensagem: String,
                      val foto: String?,
                      @SerializedName("dono")
-                     val usuario: Usuario){
-}
+                     val usuario: Usuario,
+                     val latitude: Double,
+                     val longitude: Double)

@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import br.com.caelum.twittelumappweb.R
 import br.com.caelum.twittelumappweb.decodificaParaBase64
+import br.com.caelum.twittelumappweb.gps.GPS
 import br.com.caelum.twittelumappweb.modelo.Tweet
 import br.com.caelum.twittelumappweb.viewmodel.TweetViewModel
 import br.com.caelum.twittelumappweb.viewmodel.ViewModelFactory
@@ -28,7 +29,7 @@ class TweetActivity : AppCompatActivity() {
 
     private lateinit var viewModel: TweetViewModel
     private var localFoto: String? = null
-
+    private lateinit var gps: GPS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +39,11 @@ class TweetActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this, ViewModelFactory).get(TweetViewModel::class.java)
 
+        gps = GPS(this)
+        gps.fazBusca()
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
         menuInflater.inflate(R.menu.tweet_menu, menu)
 
         return true
@@ -52,29 +53,21 @@ class TweetActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         when (item?.itemId) {
-
-            android.R.id.home -> finish()
-
-
+            android.R.id.home         -> finish()
             R.id.tweet_menu_cadastrar -> {
-
                 publicaTweet()
-
                 finish()
-
             }
-
-
-            R.id.tweet_menu_foto -> {
-
-                tiraFoto()
-
-            }
-
+            R.id.tweet_menu_foto      -> tiraFoto()
         }
 
         return true
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        gps.cancela()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -104,7 +97,9 @@ class TweetActivity : AppCompatActivity() {
 
         val foto: String? = tweet_foto.tag as String?
 
-        return Tweet(mensagemDoTweet, foto)
+        val (latitude, longitude) = gps.coordenadas()
+
+        return Tweet(mensagemDoTweet, foto, latitude = latitude, longitude = longitude)
     }
 
 

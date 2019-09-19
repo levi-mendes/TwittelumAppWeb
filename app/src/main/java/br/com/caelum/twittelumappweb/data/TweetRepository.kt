@@ -8,7 +8,7 @@ import br.com.caelum.twittelumappweb.network.TweetApi
 class TweetRepository (private val api: TweetApi, private val storage: LoginStorage) {
 
     suspend fun salva(tweet: Tweet) {
-        val tweetDTO = TweetDTO(tweet.mensagem, tweet.foto, storage.getUsuarioLogado())
+        val tweetDTO = TweetDTO(tweet.mensagem, tweet.foto, storage.getUsuarioLogado(), tweet.latitude, tweet.longitude)
 
         api.cria(tweetDTO)
     }
