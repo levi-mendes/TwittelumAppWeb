@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
             return@setOnNavigationItemSelectedListener true
         }
 
+        bottom_navigation.selectedItemId = R.id.menu_tweets
+
         fab_add_tweet.setOnClickListener {
             val intent = Intent(this, TweetActivity::class.java)
             startActivity(intent)

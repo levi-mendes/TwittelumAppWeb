@@ -27,6 +27,8 @@ class ListaTweetsFragment : Fragment() {
         viewModel.getTweets().observe(this, Observer { tweets ->
             tweets?.let {
                 lista_tweets.adapter = TweetAdapter(tweets)
+
+                pb_carregando_lista.visibility = View.GONE
             }
         })
 

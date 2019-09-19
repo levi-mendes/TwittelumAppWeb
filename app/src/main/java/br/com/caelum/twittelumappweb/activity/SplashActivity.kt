@@ -11,11 +11,6 @@ import br.com.caelum.twittelumappweb.viewmodel.ViewModelFactory
 
 class SplashActivity : AppCompatActivity() {
 
-    /*
-        private val viewModel: UsuarioViewModel by lazy {
-        ViewModelProviders.of(this, ViewModelFactory).get(UsuarioViewModel::class.java)
-    }
-     */
     private val viewModel: SplashViewModel by lazy {
         ViewModelProviders.of(this, ViewModelFactory).get(SplashViewModel::class.java)
     }
@@ -23,6 +18,8 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        supportActionBar?.hide()
 
         Handler().postDelayed({
 

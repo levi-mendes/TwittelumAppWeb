@@ -26,21 +26,13 @@ class TweetAdapter(private val tweets: List<TweetDTO>) : BaseAdapter() {
             view.item_foto.setImageBitmap(Carregador.decodifica(it))
         }
 
-
         return view
-
     }
 
-    override fun getItem(position: Int): Any {
-        return tweets[position]
-    }
+    override fun getItem(position: Int): Any = tweets[position]
 
-    override fun getItemId(position: Int): Long {
+    override fun getItemId(position: Int): Long = position.toLong()
 
-        return position.toLong()
-    }
+    override fun getCount(): Int = tweets.size
 
-    override fun getCount(): Int {
-        return tweets.size
-    }
 }
