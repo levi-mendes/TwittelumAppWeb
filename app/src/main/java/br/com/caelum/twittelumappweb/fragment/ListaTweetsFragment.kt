@@ -35,7 +35,7 @@ class ListaTweetsFragment : Fragment() {
             tweets?.let {
                 lista_tweets.adapter = TweetAdapter(tweets)
 
-                //pb_carregando_lista.visibility = View.GONE
+                pb_carregando_lista.visibility = View.GONE
                 view.srl_lista_tweets.isRefreshing = false
             }
         })
