@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/srl_lista_tweets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -13,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/lista_tweets" />
 
-    <ProgressBar
+    <!--<ProgressBar
         android:id="@+id/pb_carregando_lista"
         android:indeterminate="true"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
 
     <!--<android.support.v4.widget.ContentLoadingProgressBar
         app:layout_constraintStart_toStartOf="parent"
@@ -31,4 +33,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />-->
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

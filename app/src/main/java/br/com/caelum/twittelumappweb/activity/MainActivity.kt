@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import br.com.caelum.twittelumappweb.R
 import br.com.caelum.twittelumappweb.fragment.BuscadorDeTweetsFragment
 import br.com.caelum.twittelumappweb.fragment.ListaTweetsFragment
+import br.com.caelum.twittelumappweb.fragment.MapaFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.menu_tweets -> exibeFragment(ListaTweetsFragment())
                 R.id.menu_busca  -> exibeFragment(BuscadorDeTweetsFragment())
-                R.id.menu_mapa   -> exibeFragment(Fragment())
+                R.id.menu_mapa   -> exibeFragment(MapaFragment())
             }
 
             return@setOnNavigationItemSelectedListener true

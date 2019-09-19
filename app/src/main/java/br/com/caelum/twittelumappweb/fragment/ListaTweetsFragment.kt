@@ -12,6 +12,7 @@ import br.com.caelum.twittelumappweb.adapter.TweetAdapter
 import br.com.caelum.twittelumappweb.viewmodel.TweetViewModel
 import br.com.caelum.twittelumappweb.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_lista_tweets.*
+import kotlinx.android.synthetic.main.fragment_lista_tweets.view.*
 
 class ListaTweetsFragment : Fragment() {
 
@@ -24,11 +25,18 @@ class ListaTweetsFragment : Fragment() {
 
         viewModel.listar()
 
+        view.srl_lista_tweets.setOnRefreshListener { viewModel.listar() }
+
+        view.srl_lista_tweets.setColorSchemeResources(android.R.color.white,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_blue_dark)
+
         viewModel.getTweets().observe(this, Observer { tweets ->
             tweets?.let {
                 lista_tweets.adapter = TweetAdapter(tweets)
 
-                pb_carregando_lista.visibility = View.GONE
+                //pb_carregando_lista.visibility = View.GONE
+                view.srl_lista_tweets.isRefreshing = false
             }
         })
 
