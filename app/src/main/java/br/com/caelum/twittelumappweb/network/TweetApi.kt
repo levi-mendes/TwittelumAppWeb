@@ -11,7 +11,7 @@ class TweetApi(retrofit: Retrofit) {
     //http://twittelum-server.herokuapp.com/tweet
     private val service by lazy {
         retrofit.create(TweetService::class.java)
-    }
+    }https://github.com/caelumaulas/android8478-web
 
     suspend fun cria(tweetDTO: TweetDTO) = service.cria(tweetDTO)
 
