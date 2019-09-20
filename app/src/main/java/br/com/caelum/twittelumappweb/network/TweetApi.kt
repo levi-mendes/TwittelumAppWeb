@@ -8,6 +8,7 @@ import retrofit2.http.POST
 
 class TweetApi(retrofit: Retrofit) {
 
+    //http://twittelum-server.herokuapp.com/tweet
     private val service by lazy {
         retrofit.create(TweetService::class.java)
     }
