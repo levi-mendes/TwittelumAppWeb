@@ -21,12 +21,13 @@ object ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
     private fun loginApi()          = LoginApi(InicializadorDoRetrofit().cria())
     private fun tweetRepository()   = TweetRepository(tweetApi(), storage())
     private fun usuarioRepository() = UsuarioRepositorio(loginApi(), storage())
+    val tweetViewModel = TweetViewModel(tweetRepository())
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T = when(modelClass) {
 
         TweetViewModel::class.java    -> {
-            TweetViewModel(tweetRepository()) as T
+            tweetViewModel as T
 
         } UsuarioViewModel::class.java -> {
             UsuarioViewModel(usuarioRepository()) as T
